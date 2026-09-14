@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tejidos Conectados — Mercado Virtual Andino</title>
+<meta name="description" content="Compra directamente a comunidades andinas del Perú. Sin intermediarios. Plataforma en Español, Quechua y Aymara.">
+
+<!-- Vista previa al compartir en WhatsApp / redes -->
+<meta property="og:title" content="Tejidos Conectados">
+<meta property="og:description" content="Conectando artesanos indígenas con el mundo">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar">
+  <div class="navbar__inner">
+    <a href="#top" class="brand">
+      <span class="brand__mark" aria-hidden="true">🧶</span>
+      Tejidos Conectados
+    </a>
+    <div class="navbar__actions">
+      <div class="lang-menu" id="langMenu">
+        <button class="icon-btn" id="langToggle" aria-expanded="false" aria-haspopup="true">
+          🌐 <span id="currentLangLabel"></span>
+        </button>
+        <div class="lang-panel" id="langPanel" role="menu">
+          <button class="lang-option" data-lang="es" role="menuitem">🟨 Español</button>
+          <button class="lang-option" data-lang="qu" role="menuitem">🟧 Runasimi (Quechua)</button>
+          <button class="lang-option" data-lang="ay" role="menuitem">🟥 Aymar aru</button>
+        </div>
+      </div>
+      <a class="icon-btn" href="#contacto" aria-label="Ayuda" data-i18n-title="nav_help">❓</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero andean-pattern">
+    <div class="container hero__grid">
+      <div>
+        <h1 class="hero__title" data-i18n="hero_title">Tejidos Conectados</h1>
+        <div class="heading-with-audio">
+          <p class="hero__subtitle" id="heroSubtitle" data-i18n="hero_subtitle">Conectando artesanos indígenas con el mundo</p>
+          <button class="speaker-btn" data-speak-target="#heroSubtitle" aria-label="Escuchar">🔊</button>
+        </div>
+        <p class="hero__text" data-i18n="hero_text">Compra directamente a comunidades andinas. Sin intermediarios. Justo y transparente.</p>
+        <div class="hero__actions">
+          <button class="btn btn--primary" id="openSellerModal" data-i18n="hero_cta_seller">¿Eres vendedor?</button>
+        </div>
+      </div>
+
+      <div class="video-block">
+        <div class="heading-with-audio">
+          <h2 style="font-size:1.1rem;margin:0" data-i18n="video_title">Conoce Tejidos Conectados</h2>
+        </div>
+        <div class="video-frame" id="videoFrame">
+          <img class="video-thumb" src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=800&q=80" alt="Miniatura del video introductorio">
+          <button class="play-btn" id="playVideoBtn" aria-label="Reproducir video">▶</button>
+          <video class="video-player" id="introVideo" controls>
+            <!-- Coloca aquí tu archivo de video, por ejemplo: -->
+            <!-- <source src="assets/video-intro.mp4" type="video/mp4"> -->
+            <track kind="captions" src="assets/captions-es.vtt" srclang="es" label="Español" default>
+            <track kind="captions" src="assets/captions-qu.vtt" srclang="qu" label="Runasimi">
+            <track kind="captions" src="assets/captions-ay.vtt" srclang="ay" label="Aymar aru">
+          </video>
+        </div>
+        <p class="video-caption">🔊 <span data-i18n="video_play">Reproducir video</span> · 1-2 min</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FILTROS ============ -->
+  <section class="filters">
+    <div class="container">
+      <h2 id="filtersTitle" style="font-size:1.2rem" data-i18n="filters_title">Filtrar productos</h2>
+
+      <div class="filters__group">
+        <span class="filters__label" id="filterTypeLabel" data-i18n="filter_type_label">Tipo de producto</span>
+        <div class="chip-row" id="typeFilterRow"></div>
+      </div>
+
+      <div class="filters__group">
+        <span class="filters__label" id="filterRegionLabel" data-i18n="filter_region_label">Región</span>
+        <div class="chip-row" id="regionFilterRow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRODUCTOS ============ -->
+  <section class="products" id="productos">
+    <div class="container">
+      <h2 data-i18n="products_title">Productos destacados</h2>
+      <p class="products__count" id="productsCount"></p>
+      <div class="product-grid" id="productGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ CÓMO FUNCIONA ============ -->
+  <section class="how andean-pattern">
+    <div class="container">
+      <h2 data-i18n="how_title">Cómo funciona</h2>
+      <div class="how-grid">
+        <div class="how-step">
+          <div class="how-step__icon">🔍</div>
+          <p class="how-step__title" data-i18n="how_1_title">Busca productos</p>
+          <p class="how-step__text" data-i18n="how_1_text">Explora por tipo de producto o por región de tu comunidad favorita.</p>
+        </div>
+        <div class="how-step">
+          <div class="how-step__icon">📱</div>
+          <p class="how-step__title" data-i18n="how_2_title">Selecciona</p>
+          <p class="how-step__text" data-i18n="how_2_text">Elige lo que quieres comprar y revisa los detalles del vendedor.</p>
+        </div>
+        <div class="how-step">
+          <div class="how-step__icon">📞</div>
+          <p class="how-step__title" data-i18n="how_3_title">Contacta directo</p>
+          <p class="how-step__text" data-i18n="how_3_text">Llama o escribe por WhatsApp directamente al artesano.</p>
+        </div>
+        <div class="how-step">
+          <div class="how-step__icon">🚚</div>
+          <p class="how-step__title" data-i18n="how_4_title">Acuerda la entrega</p>
+          <p class="how-step__text" data-i18n="how_4_text">Coordinen juntos la forma de pago y entrega, sin intermediarios.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUIÉNES SOMOS ============ -->
+  <section class="about" id="nosotros">
+    <div class="container">
+      <div class="heading-with-audio">
+        <h2 data-i18n="about_title">¿Quiénes somos?</h2>
+        <button class="speaker-btn" data-speak-target="#aboutText" aria-label="Escuchar">🔊</button>
+      </div>
+      <div class="about__text" id="aboutText">
+        <p data-i18n="about_p1">Tejidos Conectados nace para empoderar a las tejedoras y artesanos de los Andes peruanos, dándoles un espacio propio para mostrar y vender su trabajo sin intermediarios.</p>
+        <p data-i18n="about_p2">Creemos que la tecnología debe adaptarse a las personas, no al revés. Por eso construimos una plataforma simple, en tres idiomas y pensada para celulares básicos.</p>
+        <p data-i18n="about_p3">Cada compra llega directo a las manos que tejieron, sembraron o moldearon el producto que llevas a tu casa.</p>
+      </div>
+
+      <h3 data-i18n="testimonials_title">Voces de nuestra comunidad</h3>
+      <div class="testimonials">
+        <div class="testimonial-card">
+          <p class="testimonial-card__quote">"Antes vendía solo en la feria del pueblo. Ahora me escriben desde Lima y Arequipa."</p>
+          <p class="testimonial-card__name">Justina Quispe · Cusco</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-card__quote">"Puedo hablar en quechua con mis compradores gracias a la traducción de la página."</p>
+          <p class="testimonial-card__name">Mariano Ccahuana · Puno</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-card__quote">"No necesito internet rápido, la página carga bien en mi celular."</p>
+          <p class="testimonial-card__name">Rosa Huamán · Apurímac</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="contact" id="contacto">
+    <div class="container">
+      <h2 data-i18n="contact_title">Contacto</h2>
+      <p class="section-lead" data-i18n="contact_text">¿Tienes dudas? Escríbenos, estamos para ayudarte.</p>
+      <div class="contact__actions">
+        <a class="btn btn--primary" href="https://wa.me/51999999999" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a class="btn btn--outline" href="tel:+51999999999">☎️ Llamar</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <p data-i18n="footer_rights">Hecho con respeto por las comunidades andinas del Perú.</p>
+</footer>
+
+<!-- ============ BOTÓN FLOTANTE DE AYUDA ============ -->
+<div class="help-fab">
+  <div class="help-fab__menu" id="helpFabMenu">
+    <a class="help-fab__item help-fab__item--call" href="tel:+51999999999">☎️ <span data-i18n="help_call">Llamar ayuda</span></a>
+    <a class="help-fab__item help-fab__item--whatsapp" href="https://wa.me/51999999999" target="_blank" rel="noopener">💬 <span data-i18n="help_whatsapp">WhatsApp</span></a>
+    <button class="help-fab__item" id="liveChatBtn">💬 <span data-i18n="help_chat">Chat en vivo</span></button>
+  </div>
+  <button class="help-fab__toggle" id="helpFabToggle" aria-label="Ayuda">💬</button>
+</div>
+
+<!-- ============ MODAL "¿ERES VENDEDOR?" ============ -->
+<div class="modal-overlay" id="sellerModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="sellerModalTitle">
+    <h3 class="modal__title" id="sellerModalTitle" data-i18n="seller_modal_title">¿Quieres vender tus productos?</h3>
+    <p data-i18n="seller_modal_text">Escríbenos por WhatsApp y te ayudamos a publicar tu catálogo, gratis.</p>
+    <div class="modal__actions">
+      <a class="btn btn--primary" href="https://wa.me/51999999999?text=Hola,%20quiero%20vender%20mis%20productos%20en%20Tejidos%20Conectados" target="_blank" rel="noopener" data-i18n="seller_modal_cta">Escribir por WhatsApp</a>
+      <button class="btn btn--outline" id="closeSellerModal" data-i18n="close">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/translations.js"></script>
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
