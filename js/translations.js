@@ -135,3 +135,42 @@ const TRANSLATIONS = {
     audio_playing: "Istawi…",
   },
 };
+
+/* ============================================================
+   Testimonios (traducidos a los 3 idiomas)
+   Nota: las traducciones en quechua y aymara son un punto de
+   partida; te recomendamos que un hablante nativo las revise.
+   ============================================================ */
+
+const TESTIMONIALS = [
+  {
+    id: "t1",
+    name: "Justina Quispe",
+    place: { es: "Cusco", qu: "Qusqu", ay: "Qusqu" },
+    quote: {
+      es: "Antes vendía solo en la feria del pueblo. Ahora me escriben desde Lima y Arequipa.",
+      qu: "Ñawpaqta llaqtapa ferianpi rantichirqani. Kunanqa Limamanta, Arequipamantawan qillqawanku.",
+      ay: "Nayraxa markan feriapanwa alasiyirïta. Jichhax Lima, Arequipa markanakat qillqapxitu.",
+    },
+  },
+  {
+    id: "t2",
+    name: "Mariano Ccahuana",
+    place: { es: "Puno", qu: "Puno", ay: "Puno" },
+    quote: {
+      es: "Puedo hablar en quechua con mis compradores gracias a la traducción de la página.",
+      qu: "Runasimipi rantichiqkunawan rimayta atini, kay página t'ikrasqanrayku.",
+      ay: "Aymar arut alasirinakampi parlasiñ atsta, kay jamuqa t'ikrataparjamawa.",
+    },
+  },
+  {
+    id: "t3",
+    name: "Rosa Huamán",
+    place: { es: "Apurímac", qu: "Apurimaq", ay: "Apurimaq" },
+    quote: {
+      es: "No necesito internet rápido, la página carga bien en mi celular.",
+      qu: "Mana utqha internetta necesitanichu, celularniypi allinta cargakun página.",
+      ay: "Janiwa jank'akipan internet munaskiti, celularajanx wali askiw cargasi.",
+    },
+  },
+];

@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -21,21 +21,24 @@
 <header class="navbar">
   <div class="navbar__inner">
     <a href="#top" class="brand">
-      <span class="brand__mark" aria-hidden="true">🧶</span>
+      <span class="brand__mark icon" data-icon="logo" aria-hidden="true"></span>
       Tejidos Conectados
     </a>
     <div class="navbar__actions">
       <div class="lang-menu" id="langMenu">
         <button class="icon-btn" id="langToggle" aria-expanded="false" aria-haspopup="true">
-          🌐 <span id="currentLangLabel"></span>
+          <span class="icon" data-icon="globe" aria-hidden="true"></span>
+          <span id="currentLangLabel"></span>
         </button>
         <div class="lang-panel" id="langPanel" role="menu">
-          <button class="lang-option" data-lang="es" role="menuitem">🟨 Español</button>
-          <button class="lang-option" data-lang="qu" role="menuitem">🟧 Runasimi (Quechua)</button>
-          <button class="lang-option" data-lang="ay" role="menuitem">🟥 Aymar aru</button>
+          <button class="lang-option" data-lang="es" role="menuitem">Español</button>
+          <button class="lang-option" data-lang="qu" role="menuitem">Runasimi (Quechua)</button>
+          <button class="lang-option" data-lang="ay" role="menuitem">Aymar aru</button>
         </div>
       </div>
-      <a class="icon-btn" href="#contacto" aria-label="Ayuda" data-i18n-title="nav_help">❓</a>
+      <a class="icon-btn" href="#contacto" aria-label="Ayuda" data-i18n-title="nav_help">
+        <span class="icon" data-icon="help" aria-hidden="true"></span>
+      </a>
     </div>
   </div>
 </header>
@@ -43,13 +46,21 @@
 <main id="top">
 
   <!-- ============ HERO ============ -->
-  <section class="hero andean-pattern">
+  <section class="hero has-default-bg" data-editable-bg="hero">
+    <div class="section-bg-media" id="heroBgImg" data-default-bg="assets/bg-hero.svg" style="background-image:url('assets/bg-hero.svg')"></div>
+    <div class="section-bg-overlay"></div>
+    <button class="bg-edit-btn edit-mode-only" data-media-pick="bg:hero" aria-label="Cambiar imagen de fondo">
+      <span class="icon" data-icon="image" aria-hidden="true"></span> Cambiar fondo
+    </button>
+    <button class="bg-reset-btn edit-mode-only" data-media-reset="bg:hero" style="display:none">
+      <span class="icon" data-icon="reset" aria-hidden="true"></span>
+    </button>
     <div class="container hero__grid">
       <div>
         <h1 class="hero__title" data-i18n="hero_title">Tejidos Conectados</h1>
         <div class="heading-with-audio">
           <p class="hero__subtitle" id="heroSubtitle" data-i18n="hero_subtitle">Conectando artesanos indígenas con el mundo</p>
-          <button class="speaker-btn" data-speak-target="#heroSubtitle" aria-label="Escuchar">🔊</button>
+          <button class="speaker-btn" data-speak-target="#heroSubtitle" aria-label="Escuchar"><span class="icon" data-icon="volume" aria-hidden="true"></span></button>
         </div>
         <p class="hero__text" data-i18n="hero_text">Compra directamente a comunidades andinas. Sin intermediarios. Justo y transparente.</p>
         <div class="hero__actions">
@@ -62,8 +73,8 @@
           <h2 style="font-size:1.1rem;margin:0" data-i18n="video_title">Conoce Tejidos Conectados</h2>
         </div>
         <div class="video-frame" id="videoFrame">
-          <img class="video-thumb" src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=800&q=80" alt="Miniatura del video introductorio">
-          <button class="play-btn" id="playVideoBtn" aria-label="Reproducir video">▶</button>
+          <img class="video-thumb" src="assets/video-poster.svg" data-default-src="assets/video-poster.svg" alt="Miniatura del video introductorio">
+          <button class="play-btn" id="playVideoBtn" aria-label="Reproducir video"><span class="icon" data-icon="play" aria-hidden="true"></span></button>
           <video class="video-player" id="introVideo" controls>
             <!-- Coloca aquí tu archivo de video, por ejemplo: -->
             <!-- <source src="assets/video-intro.mp4" type="video/mp4"> -->
@@ -72,7 +83,12 @@
             <track kind="captions" src="assets/captions-ay.vtt" srclang="ay" label="Aymar aru">
           </video>
         </div>
-        <p class="video-caption">🔊 <span data-i18n="video_play">Reproducir video</span> · 1-2 min</p>
+        <div class="video-edit-row edit-mode-only">
+          <button class="chip" id="videoUploadBtn"><span class="icon" data-icon="video" aria-hidden="true"></span> Subir mi video</button>
+          <button class="chip" data-media-pick="video:poster"><span class="icon" data-icon="image" aria-hidden="true"></span> Cambiar miniatura</button>
+          <button class="chip chip--ghost" data-media-reset="video:intro" style="display:none"><span class="icon" data-icon="reset" aria-hidden="true"></span> Quitar video</button>
+        </div>
+        <p class="video-caption"><span class="icon icon--sm" data-icon="video" aria-hidden="true"></span> <span data-i18n="video_play">Reproducir video</span> · 1-2 min</p>
       </div>
     </div>
   </section>
@@ -99,32 +115,41 @@
     <div class="container">
       <h2 data-i18n="products_title">Productos destacados</h2>
       <p class="products__count" id="productsCount"></p>
+      <p class="edit-hint edit-mode-only"><span class="icon icon--sm" data-icon="pencil" aria-hidden="true"></span> Pasa el mouse sobre una foto para cambiarla, o haz clic en un texto para editarlo.</p>
       <div class="product-grid" id="productGrid"></div>
     </div>
   </section>
 
   <!-- ============ CÓMO FUNCIONA ============ -->
-  <section class="how andean-pattern">
+  <section class="how has-default-bg" data-editable-bg="how">
+    <div class="section-bg-media" id="howBgImg" data-default-bg="assets/bg-how.svg" style="background-image:url('assets/bg-how.svg')"></div>
+    <div class="section-bg-overlay section-bg-overlay--light"></div>
+    <button class="bg-edit-btn edit-mode-only" data-media-pick="bg:how" aria-label="Cambiar imagen de fondo">
+      <span class="icon" data-icon="image" aria-hidden="true"></span> Cambiar fondo
+    </button>
+    <button class="bg-reset-btn edit-mode-only" data-media-reset="bg:how" style="display:none">
+      <span class="icon" data-icon="reset" aria-hidden="true"></span>
+    </button>
     <div class="container">
       <h2 data-i18n="how_title">Cómo funciona</h2>
       <div class="how-grid">
         <div class="how-step">
-          <div class="how-step__icon">🔍</div>
+          <div class="how-step__icon icon" data-icon="search" aria-hidden="true"></div>
           <p class="how-step__title" data-i18n="how_1_title">Busca productos</p>
           <p class="how-step__text" data-i18n="how_1_text">Explora por tipo de producto o por región de tu comunidad favorita.</p>
         </div>
         <div class="how-step">
-          <div class="how-step__icon">📱</div>
+          <div class="how-step__icon icon" data-icon="smartphone" aria-hidden="true"></div>
           <p class="how-step__title" data-i18n="how_2_title">Selecciona</p>
           <p class="how-step__text" data-i18n="how_2_text">Elige lo que quieres comprar y revisa los detalles del vendedor.</p>
         </div>
         <div class="how-step">
-          <div class="how-step__icon">📞</div>
+          <div class="how-step__icon icon" data-icon="phone" aria-hidden="true"></div>
           <p class="how-step__title" data-i18n="how_3_title">Contacta directo</p>
           <p class="how-step__text" data-i18n="how_3_text">Llama o escribe por WhatsApp directamente al artesano.</p>
         </div>
         <div class="how-step">
-          <div class="how-step__icon">🚚</div>
+          <div class="how-step__icon icon" data-icon="truck" aria-hidden="true"></div>
           <p class="how-step__title" data-i18n="how_4_title">Acuerda la entrega</p>
           <p class="how-step__text" data-i18n="how_4_text">Coordinen juntos la forma de pago y entrega, sin intermediarios.</p>
         </div>
@@ -133,11 +158,19 @@
   </section>
 
   <!-- ============ QUIÉNES SOMOS ============ -->
-  <section class="about" id="nosotros">
+  <section class="about has-default-bg" id="nosotros" data-editable-bg="about">
+    <div class="section-bg-media" id="aboutBgImg" data-default-bg="assets/bg-about.svg" style="background-image:url('assets/bg-about.svg')"></div>
+    <div class="section-bg-overlay section-bg-overlay--light"></div>
+    <button class="bg-edit-btn edit-mode-only" data-media-pick="bg:about" aria-label="Cambiar imagen de fondo">
+      <span class="icon" data-icon="image" aria-hidden="true"></span> Cambiar fondo
+    </button>
+    <button class="bg-reset-btn edit-mode-only" data-media-reset="bg:about" style="display:none">
+      <span class="icon" data-icon="reset" aria-hidden="true"></span>
+    </button>
     <div class="container">
       <div class="heading-with-audio">
         <h2 data-i18n="about_title">¿Quiénes somos?</h2>
-        <button class="speaker-btn" data-speak-target="#aboutText" aria-label="Escuchar">🔊</button>
+        <button class="speaker-btn" data-speak-target="#aboutText" aria-label="Escuchar"><span class="icon" data-icon="volume" aria-hidden="true"></span></button>
       </div>
       <div class="about__text" id="aboutText">
         <p data-i18n="about_p1">Tejidos Conectados nace para empoderar a las tejedoras y artesanos de los Andes peruanos, dándoles un espacio propio para mostrar y vender su trabajo sin intermediarios.</p>
@@ -146,31 +179,26 @@
       </div>
 
       <h3 data-i18n="testimonials_title">Voces de nuestra comunidad</h3>
-      <div class="testimonials">
-        <div class="testimonial-card">
-          <p class="testimonial-card__quote">"Antes vendía solo en la feria del pueblo. Ahora me escriben desde Lima y Arequipa."</p>
-          <p class="testimonial-card__name">Justina Quispe · Cusco</p>
-        </div>
-        <div class="testimonial-card">
-          <p class="testimonial-card__quote">"Puedo hablar en quechua con mis compradores gracias a la traducción de la página."</p>
-          <p class="testimonial-card__name">Mariano Ccahuana · Puno</p>
-        </div>
-        <div class="testimonial-card">
-          <p class="testimonial-card__quote">"No necesito internet rápido, la página carga bien en mi celular."</p>
-          <p class="testimonial-card__name">Rosa Huamán · Apurímac</p>
-        </div>
-      </div>
+      <div class="testimonials" id="testimonialsGrid"></div>
     </div>
   </section>
 
   <!-- ============ CONTACTO ============ -->
-  <section class="contact" id="contacto">
+  <section class="contact has-default-bg" id="contacto" data-editable-bg="contact">
+    <div class="section-bg-media" id="contactBgImg" data-default-bg="assets/bg-contact.svg" style="background-image:url('assets/bg-contact.svg')"></div>
+    <div class="section-bg-overlay"></div>
+    <button class="bg-edit-btn edit-mode-only" data-media-pick="bg:contact" aria-label="Cambiar imagen de fondo">
+      <span class="icon" data-icon="image" aria-hidden="true"></span> Cambiar fondo
+    </button>
+    <button class="bg-reset-btn edit-mode-only" data-media-reset="bg:contact" style="display:none">
+      <span class="icon" data-icon="reset" aria-hidden="true"></span>
+    </button>
     <div class="container">
       <h2 data-i18n="contact_title">Contacto</h2>
       <p class="section-lead" data-i18n="contact_text">¿Tienes dudas? Escríbenos, estamos para ayudarte.</p>
       <div class="contact__actions">
-        <a class="btn btn--primary" href="https://wa.me/51999999999" target="_blank" rel="noopener">💬 WhatsApp</a>
-        <a class="btn btn--outline" href="tel:+51999999999">☎️ Llamar</a>
+        <a class="btn btn--primary" href="https://wa.me/51999999999" target="_blank" rel="noopener"><span class="icon" data-icon="chat" aria-hidden="true"></span> WhatsApp</a>
+        <a class="btn btn--outline" href="tel:+51999999999"><span class="icon" data-icon="phone" aria-hidden="true"></span> Llamar</a>
       </div>
     </div>
   </section>
@@ -184,12 +212,55 @@
 <!-- ============ BOTÓN FLOTANTE DE AYUDA ============ -->
 <div class="help-fab">
   <div class="help-fab__menu" id="helpFabMenu">
-    <a class="help-fab__item help-fab__item--call" href="tel:+51999999999">☎️ <span data-i18n="help_call">Llamar ayuda</span></a>
-    <a class="help-fab__item help-fab__item--whatsapp" href="https://wa.me/51999999999" target="_blank" rel="noopener">💬 <span data-i18n="help_whatsapp">WhatsApp</span></a>
-    <button class="help-fab__item" id="liveChatBtn">💬 <span data-i18n="help_chat">Chat en vivo</span></button>
+    <a class="help-fab__item help-fab__item--call" href="tel:+51999999999"><span class="icon" data-icon="phone" aria-hidden="true"></span> <span data-i18n="help_call">Llamar ayuda</span></a>
+    <a class="help-fab__item help-fab__item--whatsapp" href="https://wa.me/51999999999" target="_blank" rel="noopener"><span class="icon" data-icon="chat" aria-hidden="true"></span> <span data-i18n="help_whatsapp">WhatsApp</span></a>
+    <button class="help-fab__item" id="liveChatBtn"><span class="icon" data-icon="chat" aria-hidden="true"></span> <span data-i18n="help_chat">Chat en vivo</span></button>
   </div>
-  <button class="help-fab__toggle" id="helpFabToggle" aria-label="Ayuda">💬</button>
+  <button class="help-fab__toggle" id="helpFabToggle" aria-label="Ayuda"><span class="icon" data-icon="chat" aria-hidden="true"></span></button>
 </div>
+
+<!-- ============ BOTÓN Y PANEL DE EDICIÓN DEL SITIO ============ -->
+<button class="edit-toggle-fab" id="editModeToggle" aria-pressed="false">
+  <span class="icon" data-icon="pencil" aria-hidden="true"></span> <span>Editar sitio</span>
+</button>
+
+<div class="edit-panel" id="editPanel">
+  <div class="edit-panel__header">
+    <h3><span class="icon" data-icon="layers" aria-hidden="true"></span> Panel de edición</h3>
+    <button class="icon-btn" id="editPanelClose" aria-label="Cerrar panel"><span class="icon" data-icon="close" aria-hidden="true"></span></button>
+  </div>
+  <p class="edit-panel__intro">Cambia fondos, imágenes y video. Los cambios quedan guardados en este navegador y dispositivo.</p>
+
+  <div class="edit-panel__section">
+    <h4><span class="icon icon--sm" data-icon="image" aria-hidden="true"></span> Fondos de sección</h4>
+    <div class="edit-row"><span>Portada</span><button class="chip" data-media-pick="bg:hero">Subir imagen</button><button class="chip chip--ghost" data-media-reset="bg:hero" style="display:none">Quitar</button></div>
+    <div class="edit-row"><span>Cómo funciona</span><button class="chip" data-media-pick="bg:how">Subir imagen</button><button class="chip chip--ghost" data-media-reset="bg:how" style="display:none">Quitar</button></div>
+    <div class="edit-row"><span>Quiénes somos</span><button class="chip" data-media-pick="bg:about">Subir imagen</button><button class="chip chip--ghost" data-media-reset="bg:about" style="display:none">Quitar</button></div>
+    <div class="edit-row"><span>Contacto</span><button class="chip" data-media-pick="bg:contact">Subir imagen</button><button class="chip chip--ghost" data-media-reset="bg:contact" style="display:none">Quitar</button></div>
+  </div>
+
+  <div class="edit-panel__section">
+    <h4><span class="icon icon--sm" data-icon="video" aria-hidden="true"></span> Video de portada</h4>
+    <div class="edit-row"><span>Video</span><button class="chip" id="videoUploadBtnPanel">Subir video</button><button class="chip chip--ghost" data-media-reset="video:intro" style="display:none">Quitar</button></div>
+    <div class="edit-row"><span>Miniatura</span><button class="chip" data-media-pick="video:poster">Subir imagen</button><button class="chip chip--ghost" data-media-reset="video:poster" style="display:none">Quitar</button></div>
+  </div>
+
+  <div class="edit-panel__section">
+    <h4><span class="icon icon--sm" data-icon="image" aria-hidden="true"></span> Fotos de productos</h4>
+    <p class="edit-panel__hint">Cierra este panel, pasa el mouse sobre una foto de producto en la página y haz clic en el lápiz para cambiarla.</p>
+  </div>
+
+  <div class="edit-panel__section">
+    <h4><span class="icon icon--sm" data-icon="type" aria-hidden="true"></span> Textos</h4>
+    <p class="edit-panel__hint">Con el modo edición activo, haz clic sobre cualquier texto de la página (resaltado en amarillo) para escribir el tuyo. Cambia el idioma arriba para editar cada versión.</p>
+  </div>
+
+  <button class="edit-panel__reset-all" id="resetAllBtn"><span class="icon icon--sm" data-icon="reset" aria-hidden="true"></span> Restablecer todo lo personalizado</button>
+  <p class="edit-panel__note">Nota: estos cambios viven solo en este navegador. Para publicarlos para todos tus visitantes, sigue las instrucciones del README.</p>
+</div>
+
+<input type="file" id="mediaImageInput" accept="image/*" hidden>
+<input type="file" id="mediaVideoInput" accept="video/*" hidden>
 
 <!-- ============ MODAL "¿ERES VENDEDOR?" ============ -->
 <div class="modal-overlay" id="sellerModal">
@@ -205,6 +276,8 @@
 
 <script src="js/translations.js"></script>
 <script src="js/products.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/editor.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

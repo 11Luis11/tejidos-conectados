@@ -1,0 +1,11 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <pattern id="weave" width="100" height="100" patternUnits="userSpaceOnUse">
+      <rect width="100" height="100" fill="#fffbf0"/>
+      <path d="M50,10 L90,50 L50,90 L10,50 Z" fill="none" stroke="#2D6A4F" stroke-width="2.5" opacity="0.16"/>
+      <path d="M50,30 L70,50 L50,70 L30,50 Z" fill="#C41E3A" opacity="0.08"/>
+      <path d="M0,50 L50,0 M50,100 L100,50" stroke="#B8715F" stroke-width="1.5" opacity="0.14"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#weave)"/>
+</svg>

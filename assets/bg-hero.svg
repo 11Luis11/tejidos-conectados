@@ -1,0 +1,34 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2c1912"/>
+      <stop offset="42%" stop-color="#7a2a2e"/>
+      <stop offset="72%" stop-color="#c1522f"/>
+      <stop offset="100%" stop-color="#f4a742"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff3d6"/>
+      <stop offset="55%" stop-color="#f4d27a"/>
+      <stop offset="100%" stop-color="#f4a742" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1180" cy="300" r="230" fill="url(#sun)"/>
+  <circle cx="1180" cy="300" r="80" fill="#fff6e3"/>
+
+  <!-- cordillera lejana -->
+  <polygon fill="#8a4a3f" opacity="0.55" points="0,560 120,470 260,520 380,420 520,500 660,440 800,510 940,430 1080,500 1220,440 1360,510 1500,450 1600,500 1600,900 0,900"/>
+
+  <!-- cordillera media -->
+  <polygon fill="#5c2f28" opacity="0.75" points="0,650 140,560 300,620 460,540 620,610 780,530 940,600 1100,540 1260,610 1420,550 1600,610 1600,900 0,900"/>
+
+  <!-- cordillera cercana -->
+  <polygon fill="#2c1912" points="0,760 160,660 340,730 520,650 700,720 880,640 1060,715 1240,645 1420,720 1600,670 1600,900 0,900"/>
+
+  <!-- borde tejido (hilos) -->
+  <g stroke-width="6" fill="none" stroke-linecap="round">
+    <path stroke="#f4a742" opacity="0.9" d="M0,878 Q40,858 80,878 T160,878 T240,878 T320,878 T400,878 T480,878 T560,878 T640,878 T720,878 T800,878 T880,878 T960,878 T1040,878 T1120,878 T1200,878 T1280,878 T1360,878 T1440,878 T1520,878 T1600,878"/>
+    <path stroke="#c41e3a" opacity="0.85" d="M0,892 Q40,872 80,892 T160,892 T240,892 T320,892 T400,892 T480,892 T560,892 T640,892 T720,892 T800,892 T880,892 T960,892 T1040,892 T1120,892 T1200,892 T1280,892 T1360,892 T1440,892 T1520,892 T1600,892"/>
+  </g>
+</svg>

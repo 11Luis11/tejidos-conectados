@@ -12,7 +12,7 @@ const PRODUCTS = [
     region: "cusco",
     seller: "Justina Quispe",
     phone: "+51987654321",
-    image: "https://images.unsplash.com/photo-1594736797933-d0c6c4b6e5b5?w=600&q=80",
+    image: "assets/product-1.svg",
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const PRODUCTS = [
     region: "huancavelica",
     seller: "Familia Mamani",
     phone: "+51987654322",
-    image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80",
+    image: "assets/product-2.svg",
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const PRODUCTS = [
     region: "puno",
     seller: "Cooperativa Sumaq",
     phone: "+51987654323",
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&q=80",
+    image: "assets/product-3.svg",
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const PRODUCTS = [
     region: "ayacucho",
     seller: "Taller Inti",
     phone: "+51987654324",
-    image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=600&q=80",
+    image: "assets/product-4.svg",
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ const PRODUCTS = [
     region: "apurimac",
     seller: "Rosa Huamán",
     phone: "+51987654325",
-    image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&q=80",
+    image: "assets/product-5.svg",
   },
   {
     id: 6,
@@ -62,7 +62,7 @@ const PRODUCTS = [
     region: "cusco",
     seller: "Familia Condori",
     phone: "+51987654326",
-    image: "https://images.unsplash.com/photo-1610030181087-540a4409f9fd?w=600&q=80",
+    image: "assets/product-6.svg",
   },
   {
     id: 7,
@@ -72,7 +72,7 @@ const PRODUCTS = [
     region: "puno",
     seller: "Don Mariano",
     phone: "+51987654327",
-    image: "https://images.unsplash.com/photo-1626200926749-59527ccb0e9e?w=600&q=80",
+    image: "assets/product-7.svg",
   },
   {
     id: 8,
@@ -82,7 +82,7 @@ const PRODUCTS = [
     region: "huancavelica",
     seller: "Platería Pukara",
     phone: "+51987654328",
-    image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80",
+    image: "assets/product-8.svg",
   },
 ];
 

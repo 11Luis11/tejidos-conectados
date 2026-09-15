@@ -6,19 +6,46 @@
   "use strict";
 
   const STORAGE_KEY = "tejidos-conectados-lang";
+  const TEXT_OV_KEY = "tc_text_overrides";
   let currentLang = localStorage.getItem(STORAGE_KEY) || "es";
   const activeFilters = { type: new Set(), region: new Set() };
 
   const speechLangMap = { es: "es-PE", qu: "es-PE", ay: "es-PE" };
 
+  /* ---------------- Textos personalizados (localStorage) ---------------- */
+
+  function loadTextOverrides() {
+    try { return JSON.parse(localStorage.getItem(TEXT_OV_KEY) || "{}"); }
+    catch (e) { return {}; }
+  }
+  function getOverride(scope) {
+    const ov = loadTextOverrides();
+    return Object.prototype.hasOwnProperty.call(ov, scope) ? ov[scope] : null;
+  }
+  function setOverride(scope, value) {
+    const ov = loadTextOverrides();
+    ov[scope] = value;
+    localStorage.setItem(TEXT_OV_KEY, JSON.stringify(ov));
+  }
+  function clearAllTextOverrides() {
+    localStorage.removeItem(TEXT_OV_KEY);
+  }
+  window.TC_setTextOverride = setOverride;
+  window.TC_clearTextOverrides = clearAllTextOverrides;
+
   /* ---------------- Traducción de la interfaz ---------------- */
 
   function applyTranslations() {
     const dict = TRANSLATIONS[currentLang];
-    document.documentElement.lang = currentLang === "es" ? "es" : "es";
+    document.documentElement.lang = "es";
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
-      if (dict[key]) el.textContent = dict[key];
+      const scope = `i18n:${currentLang}:${key}`;
+      el.dataset.i18nScope = scope;
+      if (document.activeElement === el) return; // no pisar mientras se edita
+      const custom = getOverride(scope);
+      const text = custom != null ? custom : dict[key];
+      if (text != null) el.textContent = text;
     });
     document.querySelectorAll(".lang-option").forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.lang === currentLang);
@@ -26,6 +53,11 @@
     document.getElementById("currentLangLabel").textContent = dict.langName;
     renderFilters();
     renderProducts();
+    renderTestimonials();
+    if (typeof paintIcons === "function") paintIcons();
+    if (window.TC_setEditableTextState && document.body.classList.contains("edit-mode")) {
+      window.TC_setEditableTextState(true);
+    }
   }
 
   function setLang(lang) {
@@ -153,27 +185,59 @@
     document.getElementById("productsCount").textContent = `${list.length} ${dict.products_count_suffix}`;
 
     grid.innerHTML = list.map((p) => {
-      const name = p.name[currentLang] || p.name.es;
+      const nameScope = `product:${p.id}:name:${currentLang}`;
+      const name = getOverride(nameScope) ?? (p.name[currentLang] || p.name.es);
       const region = REGION_LABELS[currentLang][p.region];
+      const imgKey = `image:product:${p.id}`;
+      const customImg = (window.TC_MEDIA && window.TC_MEDIA[imgKey]) || null;
+      const imgSrc = customImg || p.image;
       const waMsg = encodeURIComponent(`Hola ${p.seller}, me interesa tu producto "${name}" que vi en Tejidos Conectados.`);
+      const hasIcons = typeof ICONS !== "undefined";
+      const iconVolume = hasIcons ? ICONS.volume : "";
+      const iconPin = hasIcons ? ICONS.mapPin : "";
+      const iconPhone = hasIcons ? ICONS.phone : "";
+      const iconChat = hasIcons ? ICONS.chat : "";
+      const iconPencil = hasIcons ? ICONS.pencil : "";
+      const iconReset = hasIcons ? ICONS.reset : "";
       return `
         <article class="product-card">
           <div class="product-card__img-wrap">
-            <img src="${p.image}" alt="${name}" loading="lazy">
+            <img src="${imgSrc}" alt="${name}" loading="lazy">
+            <button class="img-edit-btn edit-mode-only" data-media-pick="${imgKey}" aria-label="Cambiar foto">${iconPencil}</button>
+            <button class="img-reset-btn edit-mode-only" data-media-reset="${imgKey}" style="display:${customImg ? "" : "none"}" aria-label="Quitar foto propia">${iconReset}</button>
           </div>
           <div class="product-card__body">
             <p class="product-card__name">
-              ${name}
-              <button class="speaker-btn" data-speak-text="${name}" aria-label="${dict.audio_playing}">🔊</button>
+              <span data-editable-text="${nameScope}">${name}</span>
+              <button class="speaker-btn" data-speak-text="${name}" aria-label="${dict.audio_playing}">${iconVolume}</button>
             </p>
             <p class="product-card__price">S/ ${p.price.toFixed(2)}</p>
-            <p class="product-card__meta">🏘️ ${region} · ${p.seller}</p>
+            <p class="product-card__meta">${iconPin} ${region} · ${p.seller}</p>
             <div class="product-card__actions">
-              <a class="action-btn action-btn--call" href="tel:${p.phone}">☎️ ${dict.btn_call}</a>
-              <a class="action-btn action-btn--whatsapp" href="https://wa.me/${p.phone.replace("+", "")}?text=${waMsg}" target="_blank" rel="noopener">💬 ${dict.btn_whatsapp}</a>
+              <a class="action-btn action-btn--call" href="tel:${p.phone}">${iconPhone} ${dict.btn_call}</a>
+              <a class="action-btn action-btn--whatsapp" href="https://wa.me/${p.phone.replace("+", "")}?text=${waMsg}" target="_blank" rel="noopener">${iconChat} ${dict.btn_whatsapp}</a>
             </div>
           </div>
         </article>`;
+    }).join("");
+  }
+
+  /* ---------------- Testimonios ---------------- */
+
+  function renderTestimonials() {
+    const grid = document.getElementById("testimonialsGrid");
+    if (!grid || typeof TESTIMONIALS === "undefined") return;
+    const iconQuote = typeof ICONS !== "undefined" ? ICONS.quote : "";
+    grid.innerHTML = TESTIMONIALS.map((t) => {
+      const quoteScope = `testimonial:${t.id}:quote:${currentLang}`;
+      const quote = getOverride(quoteScope) ?? (t.quote[currentLang] || t.quote.es);
+      const place = t.place[currentLang] || t.place.es;
+      return `
+        <div class="testimonial-card">
+          <span class="testimonial-card__icon" aria-hidden="true">${iconQuote}</span>
+          <p class="testimonial-card__quote" data-editable-text="${quoteScope}">${quote}</p>
+          <p class="testimonial-card__name">${t.name} · ${place}</p>
+        </div>`;
     }).join("");
   }
 
@@ -196,6 +260,10 @@
   document.getElementById("openSellerModal").addEventListener("click", () => sellerModal.classList.add("open"));
   document.getElementById("closeSellerModal").addEventListener("click", () => sellerModal.classList.remove("open"));
   sellerModal.addEventListener("click", (e) => { if (e.target === sellerModal) sellerModal.classList.remove("open"); });
+
+  /* ---------------- Exponer funciones para el editor ---------------- */
+
+  window.TC = { applyTranslations, renderProducts, renderTestimonials };
 
   /* ---------------- Inicio ---------------- */
 

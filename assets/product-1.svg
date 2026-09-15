@@ -1,0 +1,23 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#F3E6D8"/>
+  <g transform="translate(80,70)">
+    <rect x="0" y="0" width="240" height="130" rx="6" fill="#B8715F"/>
+    <rect x="0" y="0" width="240" height="18" fill="#C41E3A"/>
+    <rect x="0" y="112" width="240" height="18" fill="#2D6A4F"/>
+    <g fill="none" stroke="#F4A742" stroke-width="4">
+      <path d="M20,65 L45,40 L70,65 L95,40 L120,65 L145,40 L170,65 L195,40 L220,65"/>
+    </g>
+    <g stroke="#FFFBF0" stroke-width="6" stroke-linecap="round">
+      <line x1="10" y1="140" x2="4" y2="170"/>
+      <line x1="35" y1="140" x2="29" y2="172"/>
+      <line x1="60" y1="140" x2="54" y2="170"/>
+      <line x1="85" y1="140" x2="79" y2="172"/>
+      <line x1="110" y1="140" x2="104" y2="170"/>
+      <line x1="135" y1="140" x2="129" y2="172"/>
+      <line x1="160" y1="140" x2="154" y2="170"/>
+      <line x1="185" y1="140" x2="179" y2="172"/>
+      <line x1="210" y1="140" x2="204" y2="170"/>
+      <line x1="230" y1="140" x2="236" y2="170"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,39 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="vp-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8B6F47"/>
+      <stop offset="100%" stop-color="#5c2f28"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#vp-sky)"/>
+
+  <!-- telar de cintura, simplificado -->
+  <g stroke="#FFFBF0" stroke-width="6" fill="none" stroke-linecap="round">
+    <line x1="150" y1="120" x2="90" y2="330"/>
+    <line x1="650" y1="120" x2="710" y2="330"/>
+    <line x1="150" y1="120" x2="650" y2="120"/>
+    <line x1="90" y1="330" x2="710" y2="330"/>
+  </g>
+
+  <!-- hilos del tejido -->
+  <g stroke-width="5">
+    <line x1="180" y1="150" x2="180" y2="300" stroke="#C41E3A"/>
+    <line x1="230" y1="150" x2="230" y2="300" stroke="#F4A742"/>
+    <line x1="280" y1="150" x2="280" y2="300" stroke="#2D6A4F"/>
+    <line x1="330" y1="150" x2="330" y2="300" stroke="#D4AF37"/>
+    <line x1="380" y1="150" x2="380" y2="300" stroke="#C41E3A"/>
+    <line x1="430" y1="150" x2="430" y2="300" stroke="#F4A742"/>
+    <line x1="480" y1="150" x2="480" y2="300" stroke="#2D6A4F"/>
+    <line x1="530" y1="150" x2="530" y2="300" stroke="#D4AF37"/>
+    <line x1="580" y1="150" x2="580" y2="300" stroke="#C41E3A"/>
+    <line x1="620" y1="150" x2="620" y2="300" stroke="#F4A742"/>
+  </g>
+
+  <!-- trama horizontal entrelazada -->
+  <g stroke="#FFFBF0" stroke-width="4" opacity="0.85">
+    <path d="M160,180 h480" stroke-dasharray="18 10"/>
+    <path d="M160,210 h480" stroke-dasharray="10 18"/>
+    <path d="M160,240 h480" stroke-dasharray="18 10"/>
+    <path d="M160,270 h480" stroke-dasharray="10 18"/>
+  </g>
+</svg>

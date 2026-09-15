@@ -1,0 +1,24 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eaf3ea"/>
+      <stop offset="100%" stop-color="#fffbf0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky2)"/>
+
+  <!-- montañas lejanas -->
+  <polygon fill="#9fbfae" opacity="0.6" points="0,520 200,450 420,510 660,440 900,500 1140,440 1380,505 1600,460 1600,900 0,900"/>
+
+  <!-- terrazas de cultivo (andenes) -->
+  <g fill="#2D6A4F">
+    <rect x="0" y="620" width="1600" height="34" opacity="0.28"/>
+    <rect x="0" y="672" width="1600" height="30" opacity="0.34"/>
+    <rect x="0" y="720" width="1600" height="28" opacity="0.42"/>
+    <rect x="0" y="766" width="1600" height="26" opacity="0.5"/>
+    <rect x="0" y="810" width="1600" height="90" opacity="0.6"/>
+  </g>
+
+  <!-- sendero de piedra -->
+  <path d="M760,900 C740,800 820,720 800,620" fill="none" stroke="#D4AF37" stroke-width="10" opacity="0.35" stroke-linecap="round"/>
+</svg>
